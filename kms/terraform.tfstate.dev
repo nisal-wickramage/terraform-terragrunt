@@ -1,0 +1,79 @@
+{
+  "version": 4,
+  "terraform_version": "1.9.5",
+  "serial": 7,
+  "lineage": "ed883b57-2e04-0fc6-17f2-1c04371a47fd",
+  "outputs": {
+    "kms_key_id": {
+      "value": "ec7690e1-1f33-4784-8716-d3d02b59253c",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_kms_alias",
+      "name": "key_alias",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:kms:ap-southeast-1:000000000000:alias/kms-s3-dev",
+            "id": "alias/kms-s3-dev",
+            "name": "alias/kms-s3-dev",
+            "name_prefix": "",
+            "target_key_arn": "arn:aws:kms:ap-southeast-1:000000000000:key/ec7690e1-1f33-4784-8716-d3d02b59253c",
+            "target_key_id": "ec7690e1-1f33-4784-8716-d3d02b59253c"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_kms_key.key"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_kms_key",
+      "name": "key",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:kms:ap-southeast-1:000000000000:key/ec7690e1-1f33-4784-8716-d3d02b59253c",
+            "bypass_policy_lockout_safety_check": false,
+            "custom_key_store_id": "",
+            "customer_master_key_spec": "SYMMETRIC_DEFAULT",
+            "deletion_window_in_days": 10,
+            "description": "kms key for s3 bucket server side encryption",
+            "enable_key_rotation": true,
+            "id": "ec7690e1-1f33-4784-8716-d3d02b59253c",
+            "is_enabled": true,
+            "key_id": "ec7690e1-1f33-4784-8716-d3d02b59253c",
+            "key_usage": "ENCRYPT_DECRYPT",
+            "multi_region": false,
+            "policy": "{\"Id\":\"key-default-1\",\"Statement\":[{\"Action\":\"kms:*\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::000000000000:root\"},\"Resource\":\"*\",\"Sid\":\"Enable IAM User Permissions\"}],\"Version\":\"2012-10-17\"}",
+            "tags": {
+              "Department": "refactor",
+              "Environment": "dev",
+              "Name": "kms-s3-dev",
+              "Project": "terragrunt-poc"
+            },
+            "tags_all": {
+              "Department": "refactor",
+              "Environment": "dev",
+              "Name": "kms-s3-dev",
+              "Project": "terragrunt-poc"
+            }
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
