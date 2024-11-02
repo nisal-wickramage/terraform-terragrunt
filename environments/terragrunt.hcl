@@ -1,3 +1,22 @@
+locals {
+  relative_path = path_relative_to_include()
+  path_parts = split("/", local.relative_path)
+  environment = local.path_parts[0]
+}
+
+inputs = {
+    environment =  local.environment
+    department = "refactor"
+    project = "terragrunt-poc"
+    kms_key_description = "kms key for s3 bucket server side encryption"
+    kms_key_alias = "kms-s3"
+    bucket_name = "localstack"
+}
+
+generate "provider" {
+  path = "provider.tf"
+  if_exists = "overwrite_terragrunt"
+  contents = <<EOF
 terraform {
   required_providers {
     aws = {
@@ -42,5 +61,8 @@ provider "aws" {
     ssm            = "http://localhost:4566"
     stepfunctions  = "http://localhost:4566"
     sts            = "http://localhost:4566"
+    kms            = "http://localhost:4566"
   }
+}
+EOF
 }

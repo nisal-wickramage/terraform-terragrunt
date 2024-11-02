@@ -1,7 +1,8 @@
 # Prerequusites
 Docker
-tflocal - local stack terraform wrapper
+brew install terragrunt
 aws cli - brew install awscli
+terraform
 
 # Run local stack with Docker
 ```shell
