@@ -31,3 +31,9 @@ aws_secret_access_key=test
 terraform init
 terraform apply
 ```
+
+# Run terragrunt
+```shell
+cd environments/env
+terragrunt run-all plan
+```
